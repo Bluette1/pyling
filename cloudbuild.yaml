@@ -17,3 +17,7 @@ steps:
 # Docker push to Google Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push',  'us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/myimage:$SHORT_SHA']
+
+  # Store images in Google Artifact Registry
+images:
+  - us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/myimage:$SHORT_SHA
