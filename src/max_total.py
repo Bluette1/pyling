@@ -37,9 +37,11 @@ def max_total(T, carton_sizes):
   #      - Let solution(i - size_j) be m
   #      - If (m + 1) < current solution for i, update it to (m + 1)
   # Loop through the table from the order T downwards to find the max total possible
+  
   # Similar to
   # https://github.com/Bluette1/Miscellaneous/blob/master/src/miscellaneous/dynamicprogramming/MinimumCoins.java
   # https://www.topcoder.com/thrive/articles/Dynamic%20Programming:%20From%20Novice%20to%20Advanced
+  
   infinity = math.inf
   total = [0] + [infinity] * (T)
   
@@ -53,10 +55,4 @@ def max_total(T, carton_sizes):
   for i in range(T, 0, -1):
     if total[i] < infinity:
       return i
-print(max_total(20,[2,4]))
-print(max_total(25,[2,3]))
-print(max_total(91,[6]))
-print(max_total(43,[2, 5]))
-print(max_total(100,[6,3,2]))
-print(max_total(100,[6,3]))
 
