@@ -1,0 +1,23 @@
+steps:
+  # Installs any dependencies listed in the project's requirements.txt.  
+- name: python
+  entrypoint: 'pip'
+  args: ['install', '-V', '-r', 'requirements.txt']
+  
+  # Runs unittest from the virtual environment (with all requirements)
+  # using the verbose flag so you can see each individual test.
+- name: 'python'
+  entrypoint: 'python'
+  args: ["-m","unittest","discover","--verbose","-s","./test/","-p","*_test.py"]
+ 
+ # Docker Build
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/myimage:$SHORT_SHA', '.']
+
+# Docker push to Google Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push',  'us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/myimage:$SHORT_SHA']
+
+  # Store images in Google Artifact Registry
+images:
+  - us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/myimage:$SHORT_SHA
