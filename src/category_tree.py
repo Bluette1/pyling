@@ -14,7 +14,7 @@
 
 # Implement the add_category and get_children methods of the CategoryTree class.
 
-def recursive_find_parent(root, parentValue):
+def find_parent(root, parentValue):
   if root.value == parentValue:
     return root
   else:
@@ -22,13 +22,13 @@ def recursive_find_parent(root, parentValue):
       if child.value == parentValue:
         return child
       else: 
-        return recursive_find_parent(child, parentValue)
+        return find_parent(child, parentValue)
       
-def recursive_print(root, str=''):
+def print_tree(root, str=[]):
   if (root != None):
     str += root.value
     for child in root.children:
-      str += recursive_print(child, '')
+      str += print_tree(child, '')
   return str
 
 
@@ -37,7 +37,7 @@ class Category:
     self.value = value
     self.children = []
     if parent != None:
-      self.parent = recursive_find_parent(self, parent)
+      self.parent = find_parent(self, parent)
     else:
       self.parent = None
 
@@ -47,7 +47,7 @@ class CategoryTree:
       self.root = None
       
     def __str__(self):
-      return recursive_print(self.root, '')
+      return ','.join(print_tree(self.root, ''))
 
     def add_category(self, category, parent):
       new_category = Category(category, parent)
@@ -55,10 +55,10 @@ class CategoryTree:
         self.root = new_category
       else:
         # find the parent category and append new category as child
-        parent = recursive_find_parent(self.root, parent)
+        parent = find_parent(self.root, parent)
         parent.children.append(new_category)
     def get_children(self, parent):
-      children = recursive_find_parent(self.root, parent).children
+      children = find_parent(self.root, parent).children
       str = []
       for child in children:
         str.append(child.value)

@@ -7,7 +7,7 @@ class MyTestCase(unittest.TestCase):
         c.add_category('A', None)
         c.add_category('B', 'A')
         c.add_category('C', 'A')
-        self.assertEqual(str(c), 'ABC', 'str(c)' )
+        self.assertEqual(str(c), 'A,B,C', 'str(c)' )
         
     def test_category_tree_children(self):
         c = category_tree.CategoryTree()
