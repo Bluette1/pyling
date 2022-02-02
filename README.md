@@ -14,7 +14,7 @@ A practice repository for solving problems in Python
 
 # Acknowledgements
 
-- The content in this repository was retrieved from or inspired by the following sites
+- The content in this repository was retrieved from or inspired by various coding challenges from (including but not limited to) the following sites:
   - [Microverse](https:www.microverse.org/) - @microverseinc.
   - [The Odin project](https://www.theodinproject.com/courses/ruby-programming)
   - [Hackerrank](https://www.hackerrank.com/)
