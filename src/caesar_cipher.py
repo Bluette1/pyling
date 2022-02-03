@@ -24,7 +24,7 @@ def divide(output_str, str):
         if len(str) % 5 == 0:
             length_part = len(str) / 5
         else:
-            length_part = int(len(str) / 5) + 1
+            length_part = len(str) // 5 + 1
         result.append(output_str[length_part * i:length_part * (i + 1)])
     return result
     
